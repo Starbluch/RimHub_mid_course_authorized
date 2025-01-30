@@ -119,12 +119,18 @@ p, a {
   align-items: center;
   justify-content: space-between;
   margin: 58px 5px 0 110px;
-  opacity: 0;
+  opacity: 1;
 }
 .main__title .main__title__h1 {
   margin: 0;
   font-size: 32px;
   font-weight: 700;
+  opacity: 0;
+}
+@media (max-width: 1199px) {
+  .main__title .main__title__h1 {
+    opacity: 1;
+  }
 }
 .main__title .main__title__price {
   width: 230px;
@@ -154,11 +160,6 @@ p, a {
     margin: 58px auto 0px auto;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-  }
-}
-@media (max-width: 1199px) {
-  .main__title {
-    opacity: 1;
   }
 }
 .main__title__line {
@@ -207,9 +208,6 @@ p, a {
   }
 }
 @media (max-width: 450px) {
-  .main__title {
-    margin: 0;
-  }
   .main__title .main__title__h1 {
     font-size: 26px;
     font-weight: 700;
