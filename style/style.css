@@ -1202,6 +1202,15 @@ p, a {
 .coments__wrapper .rating__relative__2 {
   margin-right: 5%;
 }
+.coments__wrapper .rating__relative__2 .half-stars .rating-group:hover label svg {
+  fill: #37C300;
+}
+.coments__wrapper .rating__relative__2 .half-stars .rating-group:hover label svg path {
+  stroke: #37C300;
+}
+.coments__wrapper .rating__relative__2 .half-stars .rating-group input:hover ~ label svg {
+  fill: #ffffff;
+}
 @media (max-width: 768px) {
   .coments__wrapper .rating__relative__2 {
     align-items: center;
@@ -1232,22 +1241,10 @@ p, a {
     left: 74.5px;
   }
 }
-.coments__wrapper .half-stars input:checked ~ label svg {
-  fill: #ffffff;
-}
 .coments__wrapper .half-stars .rating-group input:checked ~ label svg path {
   stroke: rgb(0, 0, 0);
 }
 .coments__wrapper .half-stars input:checked ~ label svg {
-  fill: #ffffff;
-}
-.coments__wrapper .half-stars .rating-group:hover label svg {
-  fill: #37C300;
-}
-.coments__wrapper .half-stars .rating-group:hover label svg path {
-  stroke: #37C300;
-}
-.coments__wrapper .half-stars .rating-group input:hover ~ label svg {
   fill: #ffffff;
 }
 .coments__wrapper .half-stars .rating-group input:checked ~ label svg path {

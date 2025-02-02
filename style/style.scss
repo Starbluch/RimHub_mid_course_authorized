@@ -303,7 +303,7 @@ p,a {
             transform: scale(1.5);
             margin: 0;
             cursor: pointer;
-            // display: inline-block; 
+            
         }
         .half-stars label svg {
         
@@ -1293,6 +1293,16 @@ p,a {
 }
 .rating__relative__2 {
     margin-right: 5%;
+    .half-stars .rating-group:hover label svg {
+        fill: #37C300;
+    }
+    .half-stars .rating-group:hover label svg path{
+        stroke: #37C300;
+    }
+
+    .half-stars .rating-group input:hover ~ label svg {
+        fill: #ffffff; 
+    }
 }
 @media (max-width: 768px) {
     .rating__relative__2 {
@@ -1328,10 +1338,6 @@ p,a {
 }
 
 
-.half-stars input:checked ~ label svg {
-    fill: #ffffff;
-    
-}
 
 .half-stars .rating-group input:checked ~ label svg {
     path {
@@ -1343,17 +1349,8 @@ p,a {
         fill: #ffffff;
         
     }
-    .half-stars .rating-group:hover label svg {
-        fill: #37C300;
-    }
-    .half-stars .rating-group:hover label svg path{
-        stroke: #37C300;
-    }
+    
 
-    .half-stars .rating-group input:hover ~ label svg {
-        fill: #ffffff;
-        
-    }
     .half-stars .rating-group input:checked ~ label svg {
         path {
             stroke: rgb(0, 0, 0);
