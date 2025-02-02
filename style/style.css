@@ -1202,6 +1202,12 @@ p, a {
 .coments__wrapper .rating__relative__2 {
   margin-right: 5%;
 }
+.coments__wrapper .rating__relative__2 .half-stars .rating-group input:checked ~ label svg path {
+  stroke: rgb(0, 0, 0);
+}
+.coments__wrapper .rating__relative__2 .half-stars input:checked ~ label svg {
+  fill: #ffffff;
+}
 .coments__wrapper .rating__relative__2 .half-stars .rating-group:hover label svg {
   fill: #37C300;
 }
@@ -1210,6 +1216,9 @@ p, a {
 }
 .coments__wrapper .rating__relative__2 .half-stars .rating-group input:hover ~ label svg {
   fill: #ffffff;
+}
+.coments__wrapper .rating__relative__2 .half-stars .rating-group input:checked ~ label svg path {
+  stroke: rgb(0, 0, 0);
 }
 @media (max-width: 768px) {
   .coments__wrapper .rating__relative__2 {

@@ -1293,16 +1293,32 @@ p,a {
 }
 .rating__relative__2 {
     margin-right: 5%;
-    .half-stars .rating-group:hover label svg {
-        fill: #37C300;
+    .half-stars .rating-group input:checked ~ label svg {
+        path {
+            stroke: rgb(0, 0, 0);
+        }
     }
-    .half-stars .rating-group:hover label svg path{
-        stroke: #37C300;
-    }
-
-    .half-stars .rating-group input:hover ~ label svg {
-        fill: #ffffff; 
-    }
+        
+        .half-stars input:checked ~ label svg {
+            fill: #ffffff;
+            
+        }
+        
+        .half-stars .rating-group:hover label svg {
+            fill: #37C300;
+        }
+        .half-stars .rating-group:hover label svg path{
+            stroke: #37C300;
+        }
+    
+        .half-stars .rating-group input:hover ~ label svg {
+            fill: #ffffff; 
+        }
+        .half-stars .rating-group input:checked ~ label svg {
+            path {
+                stroke: rgb(0, 0, 0);
+            }
+        }
 }
 @media (max-width: 768px) {
     .rating__relative__2 {
@@ -1350,7 +1366,6 @@ p,a {
         
     }
     
-
     .half-stars .rating-group input:checked ~ label svg {
         path {
             stroke: rgb(0, 0, 0);
