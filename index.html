@@ -307,7 +307,7 @@ RIM hub пропонує унікальний навчальний продук�
                                 <form class="review__form" action="/submit-comment" method="POST">
                                     <textarea class="review__input" id="review" name="review" rows="1" cols="100" placeholder="Напишите здесь свой отзыв" required></textarea><br><br>
                                 </form>
-                                <div class="review__bottom " data-item-id="2">
+                                <div class="review__bottom " data-item-id="special-item">
                                     <button class="review__button" type="submit">
                                         <p class="review__btn">додати відгук</p>
                                     </button>
@@ -789,65 +789,98 @@ RIM hub пропонує унікальний навчальний продук�
     <script>
 
 $(document).ready(function() {
-                var defaultRating = 3.5;
-                
-                function updateRating(itemId, rating) {
+    
+    var defaultRating = 3.5;
 
-                    var prefix = '#hsr-' + itemId + '-';
+   
+    function updateRating(itemId, rating) {
+        
+        var prefix = '#hsr-' + itemId + '-';
 
+        
+        $('input[name="hsr_' + itemId + '"]').prop('disabled', true);
 
-                    $('input[name="hsr_' + itemId + '"]').prop('disabled', true);
+        
+        if (itemId !== 'special-item') {
+            
+            if (rating <= 0.5) {
+                $(prefix + '05').prop('checked', true);
+            } else if (rating <= 1) {
+                $(prefix + '10').prop('checked', true);
+            } else if (rating <= 1.5) {
+                $(prefix + '15').prop('checked', true);
+            } else if (rating <= 2) {
+                $(prefix + '20').prop('checked', true);
+            } else if (rating <= 2.5) {
+                $(prefix + '25').prop('checked', true);
+            } else if (rating <= 3) {
+                $(prefix + '30').prop('checked', true);
+            } else if (rating <= 3.5) {
+                $(prefix + '35').prop('checked', true);
+            } else if (rating <= 4) {
+                $(prefix + '40').prop('checked', true);
+            } else if (rating <= 4.5) {
+                $(prefix + '45').prop('checked', true);
+            } else if (rating >= 5) {
+                $(prefix + '50').prop('checked', true);
+            }
+        }
+        
+        else {
+            
+            if (rating <= 0.5) {
+                $(prefix + '05').prop('checked', false); 
+            } else if (rating <= 1) {
+                $(prefix + '10').prop('checked', false);
+            } else if (rating <= 1.5) {
+                $(prefix + '15').prop('checked', false);
+            } else if (rating <= 2) {
+                $(prefix + '20').prop('checked', false);
+            } else if (rating <= 2.5) {
+                $(prefix + '25').prop('checked', false);
+            } else if (rating <= 3) {
+                $(prefix + '30').prop('checked', false);
+            } else if (rating <= 3.5) {
+                $(prefix + '35').prop('checked', false);
+            } else if (rating <= 4) {
+                $(prefix + '40').prop('checked', false);
+            } else if (rating <= 4.5) {
+                $(prefix + '45').prop('checked', false);
+            } else if (rating >= 5) {
+                $(prefix + '50').prop('checked', false);
+            }
+        }
+    }
 
-                    if (rating <= 0.5) {
-                        $(prefix + '05').prop('checked', true);
-                    } else if (rating <= 1) {
-                        $(prefix + '10').prop('checked', true);
-                    } else if (rating <= 1.5) {
-                        $(prefix + '15').prop('checked', true);
-                    } else if (rating <= 2) {
-                        $(prefix + '20').prop('checked', true);
-                    } else if (rating <= 2.5) {
-                        $(prefix + '25').prop('checked', true);
-                    } else if (rating <= 3) {
-                        $(prefix + '30').prop('checked', true);
-                    } else if (rating <= 3.5) {
-                        $(prefix + '35').prop('checked', true);
-                    } else if (rating <= 4) {
-                        $(prefix + '40').prop('checked', true);
-                    } else if (rating <= 4.5) {
-                        $(prefix + '45').prop('checked', true);
-                    } else if (rating >= 5) {
-                        $(prefix + '50').prop('checked', true);
-                    }
-                }
+    
+    $('[data-item-id]').each(function() {
+        var itemId = $(this).data('item-id');
+        updateRating(itemId, defaultRating); 
+    });
 
-                $('[data-item-id]').each(function() {
-                    var itemId = $(this).data('item-id');
-                    updateRating(itemId, defaultRating);
-                });
+    
+    function fetchRating(itemId) {
+        $.ajax({
+            url: '/get-rating',
+            method: 'GET',
+            data: { item_id: itemId }, 
+            success: function(data) {
+                var rating = data.rating || defaultRating; 
+                updateRating(itemId, rating);
+            },
+            error: function() {
+                console.error("Ошибка при получении рейтинга с сервера.");
+            }
+        });
+    }
 
-                // Функция для получения рейтинга с сервера для каждого элемента 
-                function fetchRating(itemId) {
-                    $.ajax({
-                        url: '/get-rating',
-                        method: 'GET',
-                        data: { item_id: itemId },
-                        success: function(data) {
-                            var rating = data.rating || defaultRating; // Если данных нет от серва нету, ставлю по умолчанию 3.5
-                            updateRating(itemId, rating);
-                        },
-                        error: function() {
-                            console.error("Ошибка при получении рейтинга с сервера.");
-                        }
-                    });
-                }
+   
+    // $('[data-item-id]').each(function() {
+    //     var itemId = $(this).data('item-id');
+    //     fetchRating(itemId);
+    // });
+});
 
-                // Вызов для получения рейтинга
-                // $('[data-item-id]').each(function() {
-                //     var itemId = $(this).data('item-id');
-                //     fetchRating(itemId);
-                // });
-            });
         
                 
 
